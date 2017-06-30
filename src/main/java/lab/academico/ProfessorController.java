@@ -21,24 +21,31 @@ public class ProfessorController extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
-			String msg;
+			String msg = "";
 			String op = valor(req, "operacao", "");
 			String matricula = valor(req, "matricula", "");
 			String nome = valor(req, "nome", "");
-			if (op.equals("incluir")) {
-				ProfessorDao.inclui(matricula, nome);
-				msg = "Inclusão realizada com sucesso.";
-			} else if (op.equals("alterar")) {
-				ProfessorDao.alterar(matricula, nome);
-				msg = "Alteração realizada com sucesso.";
-			} else if (op.equals("excluir")) {
-				ProfessorDao.excluir(matricula);
-				msg = "Exclusão realizada com sucesso.";
-			} else if (op.equals("")) {
-				msg = "";
-			} else {
-				throw new IllegalArgumentException("Operação \"" + op + "\" não suportada.");
+			
+			switch(op) {
+			    case"":break;
+			    
+			    case "incluir":
+			        ProfessorDao.inclui(matricula, nome);
+			    break;
+			    
+			    case "alterar":
+			        ProfessorDao.alterar(matricula, nome);
+			    break;
+			    
+			    case "excluir":
+			        ProfessorDao.excluir(matricula);
+			    break;
+			    
+			    default:
+                    throw new IllegalArgumentException("Operação \"" + op + "\" não suportada.");
+                
 			}
+			
 			req.setAttribute("msg", msg);
 			req.setAttribute("professores", ProfessorDao.listar());
 			

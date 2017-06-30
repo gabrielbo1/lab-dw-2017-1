@@ -9,6 +9,7 @@
     <!-- Instruindo ao JPA que será usado Hibernate. -->
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
     <class>lab.academico.Professor</class>
+    <class>lab.academico.Aluno</class>
     <properties>
       <!-- Driver JDBC do Derby. -->
       <property name="hibernate.connection.driver_class"

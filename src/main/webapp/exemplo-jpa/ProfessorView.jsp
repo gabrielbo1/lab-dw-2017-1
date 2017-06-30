@@ -8,7 +8,8 @@
   </head>
 
   <body>
-    <h1><a href="professor">Professor</a></h1>
+    <h1><a href="professor">Professor</a></h1>&nbsp;
+    <h1><a href="aluno">Aluno</a></h1>
     <form>
       <table>
         <tr>
